@@ -21,7 +21,7 @@ console.log(films)
 <ul>
 {films.map((film)=> 
 <li key={film.id}>
-<img src="https://image.tmdb.org/t/p/w500${film.poster_path}" alt="hi" />
+<img  src={`https://image.tmdb.org/t/p/w500${film.poster_path}`} alt="hi" />
 
 
 </li>
