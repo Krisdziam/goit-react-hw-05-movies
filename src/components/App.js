@@ -19,12 +19,13 @@ export function App() {
       {Loading.remove()}
       <Routes>
         <Route path="/" element={<Header />}>
-          <Route path = "movies" element={<SearchFilm/>}> </Route>
+          <Route index element={<HomePage />}/>
+          <Route path = "movies" element={<SearchFilm />}> </Route>
       
         </Route>
       </Routes>
       </Suspense>
-      {/* <SearchFilm/> */}
+   
     </>
   );
 }

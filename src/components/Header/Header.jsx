@@ -1,12 +1,16 @@
 import styles from "./Header.module.css"
+import { NavLink, Link, Outlet } from "react-router-dom";
 
 export default function Header() {
   return (
+    <>
     <header className={styles.header}>
-        <a href="#" className={styles.title}>Home</a>
-        <a href="/movies">Films</a>
 
+        <Link className={styles.title} to="/">Home</Link>
+<Link to="/movies">Movies</Link>
 
     </header>
+    <Outlet/>
+    </>
   )
 }

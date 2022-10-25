@@ -2,6 +2,7 @@ import FilmsItems from 'components/FilmsItems/FilmsItems';
 import Form from 'components/Form.jsx/Form';
 import { fetchSearchFilms } from 'components/ServiceApi/ServiceApi';
 import { useState,useEffect } from 'react';
+import { Outlet } from 'react-router-dom';
 
 
 export default function SearchFilm() {
@@ -22,8 +23,10 @@ useEffect(() => {
 
   return (
     <>
+
     <Form onSubmit={formSubmitHandler}/>
     {query && <FilmsItems films={films} />}
+    <Outlet/>
     </>
   );
 }
