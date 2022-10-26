@@ -22,7 +22,7 @@ export function App() {
         <Route path="/" element={<Header />}>
           <Route index element={<HomePage />}/>
           <Route path = "movies" element={<SearchFilm />}/> 
-          <Route path= "/movies/:id/" element = {<MovieInfoPage/>}/>
+          <Route path= "/movies/:id" element = {<MovieInfoPage/>}/>
         
       
         </Route>
