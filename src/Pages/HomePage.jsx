@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react"
 import { fetchFilms } from "components/ServiceApi/ServiceApi";
 import styles from "./HomePage.module.css"
+import { Link } from "react-router-dom";
 
 
 export default function HomePage() {
@@ -21,10 +22,11 @@ console.log(films)
    <>
    <div className={styles.container}>
 <ul className={styles.list}>
-{films.map((film)=> 
+{films.map((film, id)=> 
 <li className={styles.item} key={film.id}>
+  <Link to={`/movies/${id}`}>
 <img  src={`https://image.tmdb.org/t/p/w500${film.poster_path}`} width='300' height='450' alt={film.title} />
-
+</Link>
 
 </li>
 

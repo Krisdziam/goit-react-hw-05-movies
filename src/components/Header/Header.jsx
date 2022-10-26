@@ -7,7 +7,7 @@ export default function Header() {
     <header className={styles.header}>
 
         <Link className={styles.title} to="/">Home</Link>
-<Link to="/movies">Movies</Link>
+<Link className={styles.title} to="/movies">Movies</Link>
 
     </header>
     <Outlet/>
