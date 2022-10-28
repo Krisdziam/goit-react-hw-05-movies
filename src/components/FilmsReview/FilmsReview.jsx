@@ -20,7 +20,7 @@ useEffect(() => {
 
 
   if (film.length === 0) {
-    return <h3>There is no reviews yet, you can be first who write it!</h3>;
+    return <h3>There are no reviews yet, you can be first who write it!</h3>;
   }
   if (film) {
     return (
