@@ -34,7 +34,7 @@ export async function fetchReviews(movie_id) {
   return response.data.results;
 }
 
-export async function fetchCredits(movie_id) {
+export async function fetchCasts(movie_id) {
   const response = await axios.get(
     `/movie/${movie_id}/credits?api_key=${API_KEY}&language=en-US&page=1`
   );

@@ -10,7 +10,7 @@ export default function Form({onSubmit}) {
   const handleSubmitForm = e => {
     e.preventDefault();
     if (query.trim() === '') {
-      const error = toast.error(
+      const error = toast.error(  
         `Please, enter the name of image`,
         {
           autoClose: 2000,

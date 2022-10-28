@@ -5,6 +5,11 @@ import HomePage from '../Pages/HomePage';
 import SearchFilm from './SearchFilm/SearchFilm';
 import { Loading } from "notiflix/build/notiflix-loading-aio";
 import MovieInfoPage from 'Pages/MovieInfoPage';
+import FilmsCast from './FilmsCast/FilmsCast';
+import FilmsReview from './FilmsReview/FilmsReview';
+
+
+
 
 
 export function App() {
@@ -22,7 +27,11 @@ export function App() {
         <Route path="/" element={<Header />}>
           <Route index element={<HomePage />}/>
           <Route path = "movies" element={<SearchFilm />}/> 
-          <Route path= "/movies/:id" element = {<MovieInfoPage/>}/>
+          <Route path= "/movies/:id" element = {<MovieInfoPage/>}>
+            <Route path='cast' element ={<FilmsCast/>}/>
+            <Route path='reviews' element ={<FilmsReview/>}/>
+            
+            </Route>
         
       
         </Route>

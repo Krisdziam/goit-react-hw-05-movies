@@ -1,6 +1,6 @@
 import { fetchInfo } from "components/ServiceApi/ServiceApi"
 import { useState, useEffect } from "react"
-import { useNavigate, useParams, useLocation } from "react-router-dom"
+import { useNavigate, useParams, useLocation, Outlet, Link } from "react-router-dom"
 import { Loading } from "notiflix/build/notiflix-loading-aio";
 
 
@@ -32,14 +32,27 @@ useEffect(() => {
       });
   }, [id]);
 
-console.log(film);
+
 
   return (
     <div>
 <button onClick={goBack} type="button">Go back</button>
 {film && film.title}
+<ul>
+            <li>
+              <Link state={{ from }} to="cast">
+                Cast
+              </Link>
+            </li>
+            <li>
+          
+              <Link state={{ from }} to="reviews">
+                Reviews
+              </Link>
+            </li>
+          </ul>
 
-
+<Outlet />
     </div>
   )
 }
