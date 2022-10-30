@@ -1,4 +1,4 @@
-import { Suspense } from 'react';
+import { Suspense, lazy } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import Header from './Header/Header';
 import HomePage from '../Pages/HomePage';
@@ -23,8 +23,9 @@ export function App() {
       })}
     >
       {Loading.remove()}
+      <Header />
       <Routes>
-        <Route path="/" element={<Header />}>
+ 
           <Route index element={<HomePage />}/>
           <Route path = "movies" element={<SearchFilm />}/> 
           <Route path= "/movies/:id" element = {<MovieInfoPage/>}>
@@ -34,7 +35,7 @@ export function App() {
             </Route>
         
       
-        </Route>
+      
       </Routes>
       </Suspense>
    
