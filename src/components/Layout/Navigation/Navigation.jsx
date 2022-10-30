@@ -4,7 +4,7 @@ export default function Navigation ()  {
   return (
     <Header>
       <Nav>
-        <Link to="/">Home</Link>
+        <Link to="/" end>Home</Link>
         <Link to="/movies">Movies</Link>
       </Nav>
     </Header>

@@ -15,9 +15,9 @@ export default function FilmInfoPage() {
   const [film, setFilm] = useState();
   const { id } = useParams();
   const location = useLocation();
-  const [prevLocation, setPrevLocation] = useState(
-    location?.state?.from ?? '/'
-  );
+  // const [prevLocation, setPrevLocation] = useState(
+  //   location?.state?.from ?? '/'
+  // );
 
   useEffect(() => {
     fetchInfo(id)
@@ -36,11 +36,11 @@ export default function FilmInfoPage() {
   return (
     <>
       <ButtonGoBackContainer>
-        <ButtonGoBack to={prevLocation}>
+        <ButtonGoBack to={location?.state?.from || '/'}>
           Go back
         </ButtonGoBack>
       </ButtonGoBackContainer>
-      {film && <FilmDetails data={film} />}
+      {film && <FilmDetails location={location.state ?? '/'} data={film} />}
       <Outlet />
     </>
   );
