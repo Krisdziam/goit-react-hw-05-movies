@@ -4,21 +4,19 @@ import styled from 'styled-components';
 
 
 export default function Header() {
-  const setActive = ({ isActive }) => ({
-    color: isActive ? 'color:blue' : '',
-  });
+  const setActive = ({ isActive }) => 'link' + (isActive ? ' active' : '')
   return (
     <>
    <WrapperBar>
       <StyledBar>
         <NavLink
-          className={({ isActive }) => 'link' + (isActive ? ' active' : '')}
+          className={setActive}
           to="/"
         >
           Home
         </NavLink>
         <NavLink
-          className={({ isActive }) => 'link' + (isActive ? ' active' : '')}
+          className={setActive}
           to="/movies"
         >
           Movies

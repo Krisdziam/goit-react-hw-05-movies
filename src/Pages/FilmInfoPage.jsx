@@ -5,7 +5,7 @@ import { Loading } from "notiflix/build/notiflix-loading-aio";
 
 
 
-export default function MovieInfoPage() {
+export default function FilmInfoPage() {
 const [film, setFilm] = useState()
 const {id} = useParams()
 

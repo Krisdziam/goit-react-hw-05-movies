@@ -1,44 +1,53 @@
 import { Suspense, lazy } from 'react';
 import { Route, Routes } from 'react-router-dom';
-import Header from './Header/Header';
-import HomePage from '../Pages/HomePage';
-import SearchFilm from './SearchFilm/SearchFilm';
-import { Loading } from "notiflix/build/notiflix-loading-aio";
-import MovieInfoPage from 'Pages/MovieInfoPage';
-import FilmsCast from './FilmsCast/FilmsCast';
-import FilmsReview from './FilmsReview/FilmsReview';
-
-
-
-
+import { Loading } from 'notiflix/build/notiflix-loading-aio';
+const HomePage = lazy(() => import('Pages/HomePage'));
+const SearchFilm = lazy(() =>
+  import('./SearchFilm/SearchFilm')
+);
+const Header = lazy(() => import('./Header/Header'));
+const FilmInfoPage = lazy(() =>
+  import('Pages/FilmInfoPage')
+);
+const FilmsCast = lazy(() =>
+  import('./FilmsCast/FilmsCast')
+);
+const FilmsReview = lazy(() =>
+  import('./FilmsReview/FilmsReview')
+);
 
 export function App() {
+  const loading = Loading.circle({
+    svgColor: '#ff6b01',
+    cssAnimationDuration: 800,
+  });
   return (
     <>
+      <Suspense fallback={loading}>
+        {Loading.remove()}
+        <Header />
 
-<Suspense
-      fallback={Loading.circle({
-        svgColor: "#ff6b01",
-        cssAnimationDuration: 800,
-      })}
-    >
-      {Loading.remove()}
-      <Header />
-      <Routes>
- 
-          <Route index element={<HomePage />}/>
-          <Route path = "movies" element={<SearchFilm />}/> 
-          <Route path= "/movies/:id" element = {<MovieInfoPage/>}>
-            <Route path='cast' element ={<FilmsCast/>}/>
-            <Route path='reviews' element ={<FilmsReview/>}/>
-            
-            </Route>
-        
-      
-      
-      </Routes>
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route />
+          <Route
+            path="movies"
+            element={<SearchFilm />}
+          />{' '}
+          <Route />
+          <Route
+            path="/movies/:id"
+            element={<FilmInfoPage />}
+          >
+            <Route path="cast" element={<FilmsCast />} />
+            <Route
+              path="reviews"
+              element={<FilmsReview />}
+            />
+          </Route>
+          <Route path="*" element={<HomePage />}></Route>
+        </Routes>
       </Suspense>
-   
     </>
   );
 }
