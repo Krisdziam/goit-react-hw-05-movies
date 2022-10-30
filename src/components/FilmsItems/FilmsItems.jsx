@@ -16,7 +16,7 @@ export default function FilmsItems({ films }) {
               />
             </Link>
           </li>
-        ))};
+        ))}
       </ul>
       
     </div>

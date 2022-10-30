@@ -1,13 +1,14 @@
 import { Suspense, lazy } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import { Loading } from 'notiflix/build/notiflix-loading-aio';
-const HomePage = lazy(() => import('Pages/HomePage'));
+
+const HomePage = lazy(() => import('Pages/HomePage/HomePage'));
 const SearchFilm = lazy(() =>
-  import('./SearchFilm/SearchFilm')
+  import('../Pages/SearchFilm/SearchFilm')
 );
-const Header = lazy(() => import('./Header/Header'));
+const Layout = lazy(() => import('./Layout/Layout'));
 const FilmInfoPage = lazy(() =>
-  import('Pages/FilmInfoPage')
+  import('Pages/FilmInfoPage/FilmInfoPage')
 );
 const FilmsCast = lazy(() =>
   import('./FilmsCast/FilmsCast')
@@ -25,27 +26,20 @@ export function App() {
     <>
       <Suspense fallback={loading}>
         {Loading.remove()}
-        <Header />
+      
 
         <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route />
-          <Route
-            path="movies"
-            element={<SearchFilm />}
-          />{' '}
-          <Route />
-          <Route
-            path="/movies/:id"
-            element={<FilmInfoPage />}
-          >
+        <Route path="/" element={<Layout />} >
+          <Route index element={<HomePage />} />
+          <Route path="movies" element={<SearchFilm />} />
+          <Route path="/movies/:id" element={<FilmInfoPage />}>
             <Route path="cast" element={<FilmsCast />} />
-            <Route
-              path="reviews"
-              element={<FilmsReview />}
+            <Route path="reviews" element={<FilmsReview />}
             />
+            <Route path="*" element={<HomePage />} />
           </Route>
-          <Route path="*" element={<HomePage />}></Route>
+          </Route>
+          
         </Routes>
       </Suspense>
     </>
