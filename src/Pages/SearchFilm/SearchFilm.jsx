@@ -47,7 +47,7 @@ export default function SearchFilm() {
     setQuery(searchValue);
   };
 
-
+ 
   return (
     <>
       <Form handleSubmitForm={handleSubmitForm}
