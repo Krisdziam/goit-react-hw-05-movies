@@ -1,37 +1,26 @@
-import {
-    ContainerFilmDetails,
-    FilmContainer,
-    Reviews,
-    Cast,
-    AdditionalInfo,
-    Title,
-    PreTitle,
-    ContainerMeta,
-    ImagePoster,
-  } from "./FilmDetails.styled";
+import { Link } from 'react-router-dom';
 
-  const FilmDetails = ({ data }) => {
-    const { title, tagline, poster_path } = data;
-    return (
-      <ContainerFilmDetails>
-        <FilmContainer>
-          <ImagePoster
-            src={`https://image.tmdb.org/t/p/w500${poster_path}`}
-            alt="poster"
-          />
-  
-          <ContainerMeta>
-            <Title>{title}</Title>
-            <PreTitle>{tagline}</PreTitle>
-           
-          </ContainerMeta>
-        </FilmContainer>
-        <AdditionalInfo>
-          <Cast to={"cast"}>Cast</Cast>
-          <Reviews to={"reviews"}>Reviews</Reviews>
-        </AdditionalInfo>
-      </ContainerFilmDetails>
-    );
-  };
-  
-  export default FilmDetails;
+const FilmDetails = ({ data }) => {
+  const { title, tagline, poster_path } = data;
+  return (
+    <>
+      <div>
+        <img
+          src={`https://image.tmdb.org/t/p/w500${poster_path}`}
+          alt="poster"
+        />
+
+        <div>
+          <h2>{title}</h2>
+          <h3>{tagline}</h3>
+        </div>
+      </div>
+      <div>
+        <Link to={'cast'}>Cast</Link>
+        <Link to={'reviews'}>Reviews</Link>
+      </div>
+    </>
+  );
+};
+
+export default FilmDetails;

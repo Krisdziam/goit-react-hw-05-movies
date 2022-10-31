@@ -1,29 +1,25 @@
 import { fetchInfo } from 'components/ServiceApi/ServiceApi';
 import { useState, useEffect } from 'react';
 import {
-  useNavigate,
   useParams,
   useLocation,
   Outlet,
   Link,
 } from 'react-router-dom';
 import { Loading } from 'notiflix/build/notiflix-loading-aio';
-import { ButtonGoBackContainer, ButtonGoBack } from "./FilmInfoPage.styled";
 import FilmDetails from './FilmDetails/FilmDetails';
 
 export default function FilmInfoPage() {
   const [film, setFilm] = useState();
   const { id } = useParams();
   const location = useLocation();
-  // const [prevLocation, setPrevLocation] = useState(
-  //   location?.state?.from ?? '/'
-  // );
 
   useEffect(() => {
     fetchInfo(id)
       .then(data => {
-        Loading.circle({
-          svgColor: '#ff6b01',
+        Loading.pulse({
+          svgColor: '#32c682',
+          svgSize: '100px',
           cssAnimationDuration: 800,
         });
         setFilm(data);
@@ -35,12 +31,13 @@ export default function FilmInfoPage() {
 
   return (
     <>
-      <ButtonGoBackContainer>
-        <ButtonGoBack to={location?.state?.from || '/'}>
-          Go back
-        </ButtonGoBack>
-      </ButtonGoBackContainer>
-      {film && <FilmDetails location={location.state ?? '/'} data={film} />}
+      <Link to={location?.state?.from || '/'}>Go back</Link>
+      {film && (
+        <FilmDetails
+          location={location.state ?? '/'}
+          data={film}
+        />
+      )}
       <Outlet />
     </>
   );

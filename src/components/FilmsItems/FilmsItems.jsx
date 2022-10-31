@@ -8,7 +8,10 @@ export default function FilmsItems({ films }) {
       <ul className={styles.list}>
         {films.map(film => (
           <li className={styles.item} key={film.id}>
-            <Link to={`/movies/${film.id}`} state={{ from: location }}>
+            <Link
+              to={`/movies/${film.id}`}
+              state={{ from: location }}
+            >
               <img
                 src={`https://image.tmdb.org/t/p/w500${film.poster_path}`}
                 width="300"
@@ -19,7 +22,6 @@ export default function FilmsItems({ films }) {
           </li>
         ))}
       </ul>
-      
     </div>
   );
 }

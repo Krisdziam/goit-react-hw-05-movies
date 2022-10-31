@@ -1,5 +1,5 @@
 import FilmsItems from 'components/FilmsItems/FilmsItems';
-import Form from 'components/Form.jsx/Form';
+import Form from 'Pages/SearchFilm/Form/Form';
 import { fetchSearchFilms } from 'components/ServiceApi/ServiceApi';
 import { useState, useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
@@ -20,8 +20,10 @@ export default function SearchFilm() {
       setSearchParams(`query=${query}`);
       fetchSearchFilms(query)
         .then((data) => {
-          Loading.circle({
-            svgColor: "#ff6b01",
+          Loading.pulse({
+            svgColor: '#32c682',
+            svgSize: '100px',
+            cssAnimationDuration: 800,
           });
           setFilms(data);
         })
@@ -48,7 +50,7 @@ export default function SearchFilm() {
 
   return (
     <>
-      <Form   handleSubmitForm={handleSubmitForm}
+      <Form handleSubmitForm={handleSubmitForm}
           handleInputChange={handleInputChange}
           query={query} />
     <FilmsItems films={films} />
