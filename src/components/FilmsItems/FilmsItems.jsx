@@ -12,13 +12,17 @@ export default function FilmsItems({ films }) {
               to={`/movies/${film.id}`}
               state={{ from: location }}
             >
-              <img
+              <img className={styles.image}
                 src={`https://image.tmdb.org/t/p/w500${film.poster_path}`}
-                width="300"
-                height="450"
+                width="250"
+                height="300"
                 alt={film.title}
               />
+            
             </Link>
+            <div className={styles.wrapper}>
+               Description
+              </div>
           </li>
         ))}
       </ul>

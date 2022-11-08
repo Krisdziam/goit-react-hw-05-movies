@@ -1,5 +1,7 @@
 import React from 'react';
 import { useState } from 'react';
+import styles from './Form.module.css';
+import { MdTravelExplore } from 'react-icons/md';
 
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -8,9 +10,9 @@ export default function Form({
   handleSubmitForm,
 }) {
   return (
-    <form onSubmit={handleSubmitForm}>
+    <form className={styles.form} onSubmit={handleSubmitForm}>
       <label>
-        <input
+        <input className={styles.formInput}
           type="text"
           autoComplete="off"
           autoFocus
@@ -18,7 +20,10 @@ export default function Form({
           onChange={handleInputChange}
         />
       </label>
-      <button type='submit'>Search</button>
+      <button className={styles.formBtn} type="submit">
+  
+        <MdTravelExplore className={styles.formIcon} />
+      </button>
     </form>
   );
 }

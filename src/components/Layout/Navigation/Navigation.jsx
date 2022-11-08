@@ -4,7 +4,7 @@ import styled from "styled-components";
 
 export default function Navigation ()  {
   return (
-    <header>
+    <header className={styles.header}>
       <nav>
         <Links to="/" end>Home</Links>
         <Links to="/movies">Movies</Links>
@@ -29,4 +29,6 @@ export default function Navigation ()  {
   &.active {
     color: #ff6b01;
   }
+
+ 
 `;
