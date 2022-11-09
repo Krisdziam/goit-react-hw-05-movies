@@ -4,7 +4,7 @@ import { fetchSearchFilms } from 'components/ServiceApi/ServiceApi';
 import { useState, useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { Outlet } from 'react-router-dom';
-import { Notify } from "notiflix/build/notiflix-notify-aio";
+import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import { Loading } from 'notiflix/build/notiflix-loading-aio';
 
 export default function SearchFilm() {
@@ -19,13 +19,21 @@ export default function SearchFilm() {
     if (query) {
       setSearchParams(`query=${query}`);
       fetchSearchFilms(query)
-        .then((data) => {
-          Loading.pulse({
-            svgColor: '#32c682',
-            svgSize: '100px',
-            cssAnimationDuration: 800,
-          });
-          setFilms(data);
+        .then(data => {
+          if (data.length > 0) {
+            Loading.pulse({
+              svgColor: '#32c682',
+              svgSize: '100px',
+              cssAnimationDuration: 800,
+            });
+            setFilms(data);
+            console.log(data);
+          } else {
+            setFilms([]);
+            return Notify.failure(
+              `We did not find movies with ${query} name`
+            );
+          }
         })
         .finally(() => {
           Loading.remove();
@@ -33,28 +41,27 @@ export default function SearchFilm() {
     }
   }, [query, setSearchParams]);
 
-
   const handleInputChange = e => {
     setSearchValue(e.target.value.toLowerCase().trim());
   };
   const handleSubmitForm = e => {
     e.preventDefault();
-    if (searchValue === "") {
-      Notify.failure("Please enter the name!");
+    if (searchValue === '') {
+      Notify.failure('Please enter the name!');
       return;
     }
 
     setQuery(searchValue);
   };
 
- 
   return (
     <>
-      <Form handleSubmitForm={handleSubmitForm}
-          handleInputChange={handleInputChange}
-          query={query} />
-    <FilmsItems films={films} />
-
+      <Form
+        handleSubmitForm={handleSubmitForm}
+        handleInputChange={handleInputChange}
+        query={query}
+      />
+      <FilmsItems films={films} />
     </>
-  )
+  );
 }

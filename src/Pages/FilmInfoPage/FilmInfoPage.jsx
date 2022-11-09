@@ -8,6 +8,7 @@ import {
 } from 'react-router-dom';
 import { Loading } from 'notiflix/build/notiflix-loading-aio';
 import FilmDetails from './FilmDetails/FilmDetails';
+import styles from './FilmInfoPage.module.css'
 
 export default function FilmInfoPage() {
   const [film, setFilm] = useState();
@@ -30,8 +31,8 @@ export default function FilmInfoPage() {
   }, [id]);
 
   return (
-    <>
-      <Link to={location?.state?.from || '/'}>Go back</Link>
+    <div className={styles.container}>
+      <Link className={styles.goBackBtn} to={location?.state?.from || '/'}>Go back</Link>
       {film && (
         <FilmDetails
           location={location.state ?? '/'}
@@ -39,6 +40,6 @@ export default function FilmInfoPage() {
         />
       )}
       <Outlet />
-    </>
+    </div>
   );
 }

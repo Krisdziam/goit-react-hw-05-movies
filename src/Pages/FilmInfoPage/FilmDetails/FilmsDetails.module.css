@@ -1,0 +1,45 @@
+.container {
+}
+
+.details {
+
+  padding: 20px 200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+}
+
+.img {
+  margin-right: 20px;
+  border-radius: 10px;
+}
+.tagline{
+    color: grey;
+    font-style: italic;
+}
+ul{
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.list{
+    padding-top: 10px;
+    padding-bottom: 20px;
+}
+.item{   
+    padding-bottom: 5px;
+}
+.genres{
+display: flex;
+
+}
+.genres__item{
+ 
+    display: flex;
+
+}
+
+.span{
+ 
+}

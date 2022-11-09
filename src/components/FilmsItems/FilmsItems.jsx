@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import styles from './FilmsItems.module.css';
+
 export default function FilmsItems({ films }) {
   const location = useLocation();
   return (
@@ -21,7 +22,7 @@ export default function FilmsItems({ films }) {
             
             </Link>
             <div className={styles.wrapper}>
-               Description
+               <h3 className={styles.title}>{film.title}</h3>
               </div>
           </li>
         ))}
