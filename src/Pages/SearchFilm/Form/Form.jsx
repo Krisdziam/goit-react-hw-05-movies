@@ -1,7 +1,6 @@
 import React from 'react';
-import { useState } from 'react';
 import styles from './Form.module.css';
-import { MdTravelExplore } from 'react-icons/md';
+import { BiCameraMovie } from 'react-icons/bi';
 
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -10,6 +9,7 @@ export default function Form({
   handleSubmitForm,
 }) {
   return (
+    <div className={styles.container}>
     <form className={styles.form} onSubmit={handleSubmitForm}>
       <label>
         <input className={styles.formInput}
@@ -22,8 +22,8 @@ export default function Form({
       </label>
       <button className={styles.formBtn} type="submit">
   
-        <MdTravelExplore className={styles.formIcon} />
+        <BiCameraMovie className={styles.formIcon} />
       </button>
-    </form>
+    </form></div>
   );
 }

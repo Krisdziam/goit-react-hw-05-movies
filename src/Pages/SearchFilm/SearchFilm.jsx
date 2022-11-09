@@ -3,7 +3,6 @@ import Form from 'Pages/SearchFilm/Form/Form';
 import { fetchSearchFilms } from 'components/ServiceApi/ServiceApi';
 import { useState, useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
-import { Outlet } from 'react-router-dom';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import { Loading } from 'notiflix/build/notiflix-loading-aio';
 

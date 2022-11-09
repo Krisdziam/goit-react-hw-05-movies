@@ -3,6 +3,7 @@ import { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { Loading } from 'notiflix/build/notiflix-loading-aio';
 import { fetchCasts } from 'components/ServiceApi/ServiceApi';
+import styles from './FilmsCast.module.css'
 
 export default function FilmsCast() {
   const [film, setFilm] = useState([]);
@@ -24,13 +25,17 @@ export default function FilmsCast() {
 
   return (
     <>
+
+
+<ul className={styles.castList}>
       {film.map(({ character, id, name, profile_path }) => (
-        <li key={id}>
-          {profile_path ? (
+        <li className={styles.castItem} key={id}>
+          <div className={styles.castImg__wrapper}>{profile_path ? (
             <img
               src={`https://image.tmdb.org/t/p/w500${profile_path}`}
               alt={name}
-              width="150px"
+              width="150"
+             
             />
           ) : (
             <img
@@ -38,13 +43,15 @@ export default function FilmsCast() {
                 'https://media.istockphoto.com/vectors/no-image-available-icon-vector-id1216251206?k=20&m=1216251206&s=170667a&w=0&h=A72dFkHkDdSfmT6iWl6eMN9t_JZmqGeMoAycP-LMAw4='
               }
               alt={name}
-              width="150px"
+              width="160"
+        
             />
-          )}
-          <h3>{name}</h3>
-          <p>Character: {character}</p>
+          )}</div>
+          <div className={styles.castName__wrapper}>
+          <h3 className={styles.name}>{name}</h3>
+          <p className={styles.character}>{character}</p></div>
         </li>
-      ))}
+      ))}</ul>
     </>
   );
 }

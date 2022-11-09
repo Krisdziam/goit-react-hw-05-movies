@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import { useEffect } from 'react';
-import { Link, useParams } from 'react-router-dom';
+import {  useParams } from 'react-router-dom';
 import { Loading } from 'notiflix/build/notiflix-loading-aio';
 import { fetchReviews } from 'components/ServiceApi/ServiceApi';
+import styles from './FilmsReview.module.css'
 
 export default function FilmsReview() {
   const [film, setFilm] = useState([]);
@@ -24,7 +25,7 @@ export default function FilmsReview() {
 
   if (film.length === 0) {
     return (
-      <h3>
+      <h3 className={styles.reviews}>
         There are no reviews yet, you can be first who write
         it!
       </h3>
@@ -32,11 +33,11 @@ export default function FilmsReview() {
   }
   if (film) {
     return (
-      <ul>
+      <ul className={styles.list}>
         {film.map(({ id, author, content }) => (
-          <li key={id}>
-            <h3>Author: {author}</h3>
-            <p>{content}</p>
+          <li className={styles.item} key={id}>
+            <h3 className={styles.author}>Author: <span className={styles.authorName}> {author}</span></h3>
+            <p className={styles.content}>{content}</p>
           </li>
         ))}
       </ul>

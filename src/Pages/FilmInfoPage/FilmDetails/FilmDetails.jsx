@@ -1,7 +1,7 @@
 import { Link, useLocation } from 'react-router-dom';
 import styled from 'styled-components';
 import styles from './FilmsDetails.module.css'
-
+import { IoArrowBackOutline } from "react-icons/io5";
 
 const FilmDetails = ({ data }) => {
   const location = useLocation();
@@ -54,7 +54,7 @@ const FilmDetails = ({ data }) => {
           width="350"
           height="400"
         />
-    <Link className={styles.goBackBtn} to={location?.state?.from || '/'}>X</Link></div>
+    <Link className={styles.goBackBtn} to={location?.state?.from || '/'}><IoArrowBackOutline/></Link></div>
 
         <div className={styles.description}>
           <div className={styles.title__wrapper}>
