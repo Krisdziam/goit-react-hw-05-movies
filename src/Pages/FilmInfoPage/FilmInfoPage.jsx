@@ -32,7 +32,7 @@ export default function FilmInfoPage() {
 
   return (
     <div className={styles.container}>
-      <Link className={styles.goBackBtn} to={location?.state?.from || '/'}>Go back</Link>
+  
       {film && (
         <FilmDetails
           location={location.state ?? '/'}
