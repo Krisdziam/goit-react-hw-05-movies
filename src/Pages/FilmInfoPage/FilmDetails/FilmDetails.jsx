@@ -1,12 +1,9 @@
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import styles from './FilmsDetails.module.css'
-import {
 
-  Link,
-} from 'react-router-dom';
 const FilmDetails = ({ data }) => {
-  const location = useLocation();
+
   const {
     genres,
 
