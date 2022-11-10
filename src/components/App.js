@@ -4,14 +4,14 @@ import { Loading } from 'notiflix/build/notiflix-loading-aio';
 
 const HomePage = lazy(() => import('Pages/HomePage/HomePage'));
 const SearchFilm = lazy(() =>
-  import('../Pages/SearchFilm/SearchFilm')
+  import('./SearchFilm/SearchFilm')
 );
 const Layout = lazy(() => import('./Layout/Layout'));
 const FilmInfoPage = lazy(() =>
   import('Pages/FilmInfoPage/FilmInfoPage')
 );
 const FilmsCast = lazy(() =>
-  import('./FilmsCast/FilmsCast')
+  import('../Pages/FilmsCast/FilmsCast')
 );
 const FilmsReview = lazy(() =>
   import('./FilmsReview/FilmsReview')

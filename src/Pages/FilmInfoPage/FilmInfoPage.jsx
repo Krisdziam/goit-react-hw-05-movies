@@ -4,11 +4,10 @@ import {
   useParams,
   useLocation,
   Outlet,
-  Link,
 } from 'react-router-dom';
 import { Loading } from 'notiflix/build/notiflix-loading-aio';
 import FilmDetails from './FilmDetails/FilmDetails';
-import styles from './FilmInfoPage.module.css'
+import styles from './FilmInfoPage.module.css';
 
 export default function FilmInfoPage() {
   const [film, setFilm] = useState();
@@ -32,7 +31,6 @@ export default function FilmInfoPage() {
 
   return (
     <div className={styles.container}>
-  
       {film && (
         <FilmDetails
           location={location.state ?? '/'}

@@ -1,4 +1,4 @@
-import FilmsItems from 'components/FilmsItems/FilmsItems';
+import FilmsItems from 'Pages/FilmsItems/FilmsItems';
 import Form from 'components/Form/Form';
 import { fetchSearchFilms } from 'ServiceApi/ServiceApi';
 import { useState, useEffect } from 'react';
@@ -7,18 +7,19 @@ import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import { Loading } from 'notiflix/build/notiflix-loading-aio';
 
 export default function SearchFilm() {
-  const [searchParams, setSearchParams] = useSearchParams();
   const [films, setFilms] = useState([]);
-  const [query, setQuery] = useState(
-    searchParams.get('query') ?? ''
-  );
-  const [searchValue, setSearchValue] = useState('');
+  const [searchParams, setSearchParams] = useSearchParams();
+  const query = searchParams.get('query') ?? '';
+
+  const onChangeQuery = query => {
+    setSearchParams({ query });
+  };
 
   useEffect(() => {
-    if (!query){
-      return
-    } {
-      
+    if (!query) {
+      return;
+    }
+    {
       fetchSearchFilms(query)
         .then(data => {
           if (data.length > 0) {
@@ -40,28 +41,11 @@ export default function SearchFilm() {
           Loading.remove();
         });
     }
-  }, [query, setSearchParams]);
-
-  const handleInputChange = e => {
-    setSearchValue(e.target.value.toLowerCase().trim());
-  };
-  const handleSubmitForm = e => {
-    e.preventDefault();
-    if (searchValue === '') {
-      Notify.failure('Please enter the name!');
-      return;
-    }
-setSearchParams(`query=${searchValue}`);
-    setQuery(searchValue);
-  };
+  }, [query]);
 
   return (
     <>
-      <Form
-        handleSubmitForm={handleSubmitForm}
-        handleInputChange={handleInputChange}
-        query={query}
-      />
+      <Form onSubmit={onChangeQuery} />
       <FilmsItems films={films} />
     </>
   );
