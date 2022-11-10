@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useEffect } from 'react';
 import {  useParams } from 'react-router-dom';
 import { Loading } from 'notiflix/build/notiflix-loading-aio';
-import { fetchReviews } from 'components/ServiceApi/ServiceApi';
+import { fetchReviews } from 'ServiceApi/ServiceApi';
 import styles from './FilmsReview.module.css'
 
 export default function FilmsReview() {

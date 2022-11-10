@@ -1,4 +1,4 @@
-import { fetchInfo } from 'components/ServiceApi/ServiceApi';
+import { fetchInfo } from 'ServiceApi/ServiceApi';
 import { useState, useEffect } from 'react';
 import {
   useParams,

@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { fetchFilms } from 'components/ServiceApi/ServiceApi';
+import { fetchFilms } from 'ServiceApi/ServiceApi';
 import { Loading } from "notiflix/build/notiflix-loading-aio";
 import FilmsItems from 'components/FilmsItems/FilmsItems';
 import styles from './HomePage.module.css'

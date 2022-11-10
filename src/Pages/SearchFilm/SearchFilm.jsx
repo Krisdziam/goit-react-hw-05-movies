@@ -1,6 +1,6 @@
 import FilmsItems from 'components/FilmsItems/FilmsItems';
-import Form from 'Pages/SearchFilm/Form/Form';
-import { fetchSearchFilms } from 'components/ServiceApi/ServiceApi';
+import Form from 'components/Form/Form';
+import { fetchSearchFilms } from 'ServiceApi/ServiceApi';
 import { useState, useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
@@ -15,8 +15,10 @@ export default function SearchFilm() {
   const [searchValue, setSearchValue] = useState('');
 
   useEffect(() => {
-    if (query) {
-      setSearchParams(`query=${query}`);
+    if (!query){
+      return
+    } {
+      
       fetchSearchFilms(query)
         .then(data => {
           if (data.length > 0) {
@@ -49,7 +51,7 @@ export default function SearchFilm() {
       Notify.failure('Please enter the name!');
       return;
     }
-
+setSearchParams(`query=${searchValue}`);
     setQuery(searchValue);
   };
 

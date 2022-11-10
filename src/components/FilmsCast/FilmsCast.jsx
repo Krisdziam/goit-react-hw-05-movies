@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { Loading } from 'notiflix/build/notiflix-loading-aio';
-import { fetchCasts } from 'components/ServiceApi/ServiceApi';
+import { fetchCasts } from 'ServiceApi/ServiceApi';
 import styles from './FilmsCast.module.css'
 
 export default function FilmsCast() {
